@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from "react";
+import { TestAtom } from "../components/atoms/TestAtom";
 
 export default function Home() {
   const [text,setText] = useState<string>('')
@@ -31,10 +32,13 @@ const deleteTodo = (index: number) => {
         <input type="text" value={text} onChange={changeText} />
         <button onClick={addTodos}>追加</button>
     </div>
+
     <div>
         <ul>
         {todos.map((todo, index) => (
             <li key={todo}>
+              {/* こんな感じでコンポーネントを呼び出します */}
+              <TestAtom text={"propsのテキストです"} />
               <p>{todo}</p>
               <button onClick={() => deleteTodo(index)}>完了</button>
             </li>
